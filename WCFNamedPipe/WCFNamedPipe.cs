@@ -12,9 +12,16 @@ namespace WCFNamedPipe
     {
         public int calculateDays(int day, int Month, int year)
         {
-            DateTime dt = new DateTime(year, Month, day);           
-            int datetodays = new DateTime(DateTime.Now.Subtract(dt).Ticks).Year - 1;
-            return datetodays;
-        }      
+            try
+            {
+                DateTime dt = new DateTime(year, Month, day);
+                int datetodays = new DateTime(DateTime.Now.Subtract(dt).Ticks).Year - 1;
+                return datetodays;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }           
+        }    
     }
 }

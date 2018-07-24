@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <system.serviceModel>
+    
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="mexBehaviour">
+          <serviceMetadata httpGetEnabled="true"/>
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    
+    <services>
+      <service name="WCFNamedPipe.WCFNamedPipe" behaviorConfiguration="mexBehaviour">
+        <endpoint address="" binding="netNamedPipeBinding" contract="WCFNamedPipe.IWCFNamedPipe"></endpoint>
+        
+        <host>
+          <baseAddresses>
+            <add baseAddress="http://localhost:8080/"/>
+            <add baseAddress="net.pipe://localhost/WCFNamedPipe/"/>
+          </baseAddresses>
+        </host>
+        
+      </service>
+    </services>
+    
+  </system.serviceModel>
+</configuration>
